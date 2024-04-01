@@ -1,0 +1,71 @@
+
+<div class="container-fluid">
+  <div class="d-flex justify-content-between mt-3"> 
+    <h3 class="text-center ">Painel Financeiro <%= params[:year] %></h3>
+    <%= form_tag(subsidiary_finances_rentals_path, method: :get) do %>
+        <%= text_field_tag(:year, '', { id: 'search-field', placeholder: 'Buscar ano...' } )%>
+        <%= submit_tag('Buscar', class: 'btn btn-primary') %>
+    <% end %>
+  </div>
+  <% if @costs_by_sub.blank? %>
+      <hr>
+      <p>Nenhuma subsidiária com dados para o ano especificado.</p>
+  <% else %>
+
+    <hr>
+    <div class="">
+      <div class="row">
+        <div class="col-12">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Subsidiary</th>
+                  <th scope="col">Alocações</th>
+                  <th scope="col">Manutenção</th>
+                  <th scope="col">Multas</th>
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <% @costs_by_sub.each do |subsidiary_id, resultado| %>
+                    <tr>
+                      <td><%= resultado[:subsidiary_name] %></td>
+                      <td>
+                        <%= resultado[:rentals_count]%>
+                        <span class="badge badge-success" style="font-size: 16px;"> 
+                          <%= number_to_currency(resultado[:daily_price], unit: 'R$', separator: ',', delimiter: '.') %> </span>
+                      </td>
+                      <td>
+                        <%= resultado[:maintenance_count]%>
+                        <span class="badge badge-danger" style="font-size: 16px;"> 
+                          <%= number_to_currency(resultado[:maintenance_value], unit: 'R$', separator: ',', delimiter: '.') %> 
+                        </span>
+                      </td>
+                      <td>
+                        <%= resultado[:fines_count]%>
+                        <span class="badge badge-danger" style="font-size: 16px;">
+                          <%= number_to_currency(resultado[:fines_value], unit: 'R$', separator: ',', delimiter: '.') %>
+                        </span>
+                      </td>
+                      <td>
+                        
+                        <span class="badge badge-info" style="font-size: 16px;">
+                          <%= number_to_currency(resultado[:daily_price].to_f -
+                            (resultado[:maintenance_value].to_f + resultado[:fines_value].to_f),
+                                        unit: 'R$', separator: ',', delimiter: '.') %>
+                        </span>
+                      </td>
+                    </tr>
+                  <% end %>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div> 
+  

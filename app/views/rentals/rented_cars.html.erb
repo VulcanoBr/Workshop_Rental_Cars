@@ -1,0 +1,41 @@
+
+<div class="d-flex justify-content-between mt-3 sticky-top"> 
+    <h3 class="text-center ">Carro(s) Alocado(s)</h3>
+    <%= form_tag(rented_cars_rentals_path, method: :get) do %>
+        <%= text_field_tag(:rented_code, '', { id: 'search-field', placeholder: 'Buscar locação...' } )%>
+        <%= submit_tag('Buscar', class: 'btn btn-primary') %>
+    <% end %>
+</div>
+
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h5>Código de Locação</h5>
+    </div>
+    <div class="col">
+      <h5>Retirada</h5>
+    </div>
+    <div class="col">
+      <h5>Previsão Devolução</h5>
+    </div>
+  </div>
+    <% if @rental_status_cars.present? %>
+      <% @rental_status_cars.each do |rented_car| %>
+        <div class="row">
+          <div class="col">
+            <p><%= link_to rented_car.rented_code, rental_path(rented_car.id) %></p>
+          </div>
+          <div class="col">
+            <p><%= rented_car.started_at.strftime("%d/%m/%Y %H:%M:%S") %></p>
+          </div>
+          <div class="col">
+            <p><%= rented_car.scheduled_end.strftime("%d/%m/%Y %H:%M:%S") %></p>
+          </div>
+        </div>
+      <% end %>
+    
+    <% else %>
+      <p>Nenhuma locação encontrada para '<%= params[:rented_code] %>' !!!.</p>
+    <% end %>
+</div>

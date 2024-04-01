@@ -1,0 +1,78 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+ <<%= link_to '<strong>Rental Cars</strong>'.html_safe, root_path, class: 'navbar-brand mr-5' %>>
+ <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                            aria-expanded="false" aria-label="Toggle navigation">
+   <span class="navbar-toggler-icon"></span>
+ </button>
+
+ <div class="collapse navbar-collapse" id="navbarSupportedContent">
+   <ul class="navbar-nav mr-auto">
+     <li class="nav-item mr-5">
+       <%= link_to 'Home', root_path, class: 'nav-link' %>
+     </li>
+     <% if user_signed_in? %>
+       <li class="nav-item dropdown mr-5">
+         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Registrar
+         </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <a class="dropdown-item" href="<%= new_car_model_path %>"><strong>Novo modelo</strong></a>
+           <a class="dropdown-item" href="<%= new_subsidiary_path %>"><strong>Nova filial</strong></a>
+           <a class="dropdown-item" href="<%= new_car_path %>"><strong>Novo carro</strong></a>
+           <a class="dropdown-item" href="<%= new_subsidiary_car_model_path %>"><strong>Novo preço</strong></a>
+           <a class="dropdown-item" href="<%= new_provider_path %>"><strong>Novo fornecedor</strong></a>
+         </div>
+       </li>
+       <li class="nav-item dropdown mr-5">
+         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCliente" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Cliente
+         </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdownCliente">
+           <a class="dropdown-item" href="<%= new_customer_path %>"><strong>Novo cliente</strong></a>
+           <a class="dropdown-item" href="<%= customers_path %>"><strong>Ver Cliente(s)</strong></a>
+         </div>
+       </li>
+       
+
+       <li class="nav-item dropdown mr-5">
+         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCliente" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Listar
+         </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdownLista">
+            <a class="dropdown-item" href="<%= available_cars_cars_path %>"><strong>Carros Disponiveis</strong></a>
+            <a class="dropdown-item" href="<%= scheduled_cars_rentals_path %>"><strong>Carro(s) Agendado(s)</strong></a>
+            <a class="dropdown-item" href="<%= rented_cars_rentals_path %>"><strong>Carro(s) Alocado(s)</strong></a>
+            <a class="dropdown-item" href="<%= maintenances_path %>"><strong>Carros em Manutenção</strong></a>
+            <a class="dropdown-item" href="<%= providers_path %>"><strong>Fornecedor(es)</strong></a>
+         </div>
+       </li>
+
+       <li class="nav-item mr-5">
+         <%= link_to 'Agendar Locação', new_rental_path, class: 'nav-link' %>
+       </li>
+      
+       
+       <%= form_tag(search_cars_path, method: :get) do %>
+         <%= text_field_tag(:q, '', { id: 'search-field', placeholder: 'Buscar carro...' } )%>
+         <%= submit_tag('Buscar') %>
+       <% end %>
+     <% end %>
+   </ul>
+   <ul class="navbar-nav ml-auto">
+     <% if user_signed_in? %>
+       <li class="nav-item d-flex align-items-center mr-sm-2">
+         <strong style="color: white"><%= current_user.email %></strong>
+       </li>
+       <li class="nav-item">
+         <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-outline-primary' %>
+       </li>
+     <% else %>
+       <li class="nav-item">
+         <%= link_to 'Login', new_user_session_path, class: 'btn btn-outline-primary' %>
+       </li>
+     <% end %>
+   </ul>
+ </div>
+</nav>

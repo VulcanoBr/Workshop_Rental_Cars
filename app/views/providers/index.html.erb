@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-between mt-3" id="prov"> 
+    <h4 class="text-center ">Lista de Fornecedor(es)</h4>
+    <%= form_tag(providers_path, method: :get) do %>
+        <%= text_field_tag(:name, '', { id: 'search-field', placeholder: 'Buscar fornecedor(es)...' } )%>
+        <%= submit_tag('Buscar', class: 'btn btn-primary') %>
+    <% end %>
+</div>
+
+<% if @providers.present? %>
+  <ul class="list-group">
+    <% @providers.each do |provider| %>
+      <li> <%= link_to provider.name, provider_path(provider) %> </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Nenhum fornecedor encontrado para '<%= params[:name] %>' !!!.</p>
+<% end %>

@@ -1,0 +1,9 @@
+<h3><%= @customer.description %></h3>
+<p>Nome: <%= @customer.name %></p>
+<p>Nome Fantasia: <%= @customer.fantasy_name %></p>
+<p>Email: <%= @customer.email %></p>
+<p>CNPJ: <%= @customer.cnpj %></p>
+<p>Telefone: <%= @customer.phone %></p>
+
+<%= link_to "Editar cliente", edit_company_customer_path, class: "btn btn-primary" %>
+<%= link_to 'Cancelar', root_path, class:"btn btn-outline-danger" %>

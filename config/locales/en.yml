@@ -1,0 +1,37 @@
+en:
+  faker:
+    address:
+      street_address: "{{street_name}} {{building_number}}"
+      community: ''
+      full_address:
+        - "Rua das Flores, 123 - Bairro Jardim Primavera - Cidade Nova - Estado A - CEP: 12345-678"
+        - "Avenida dos Bandeirantes, 456 - Bairro Centro - Cidade Grande - Estado B - CEP: 23456-789"
+        - "Praça da Liberdade, 789 - Bairro Liberdade - Cidade Velha - Estado C - CEP: 34567-890"
+        - "Rua do Comércio, 321 - Bairro Comercial - Cidade Antiga - Estado D - CEP: 45678-901"
+        - "Avenida Paulista, 654 - Bairro Bela Vista - Cidade Metrópole - Estado E - CEP: 56789-012"
+        - "Travessa das Oliveiras, 987 - Bairro Oliveira - Cidade Nova - Estado F - CEP: 67890-123"
+        - "Rua das Pedras, 234 - Bairro Pedregulho - Cidade Velha - Estado G - CEP: 78901-234"
+        - "Alameda dos Ipês, 567 - Bairro Floricultura - Cidade Nova - Estado H - CEP: 89012-345"
+        - "Praça dos Esportes, 890 - Bairro Esportivo - Cidade Grande - Estado I - CEP: 90123-456"
+        - "Avenida da Saudade, 345 - Bairro Saudade - Cidade Pequena - Estado J - CEP: 01234-567"
+        - "Rua das Acácias, 678 - Bairro Acácias - Cidade Nova - Estado K - CEP: 12345-678"
+        - "Estrada do Sol, 901 - Bairro Sol Nascente - Cidade Velha - Estado L - CEP: 23456-789"
+        - "Viela das Rosas, 234 - Bairro Rosa - Cidade Nova - Estado M - CEP: 34567-890"
+        - "Travessa das Violetas, 567 - Bairro Violeta - Cidade Grande - Estado N - CEP: 45678-901"
+        - "Alameda dos Girassóis, 890 - Bairro Girassol - Cidade Velha - Estado O - CEP: 56789-012"
+    vehicle:
+      #car_options: ""
+      models_by_make: ""
+      makes: ""
+    customer:
+      name:
+        first_name: ""
+    name:
+      first_name: ""
+    company:
+      industry:
+        - "Tecnologia"
+        - "Finanças"
+        - "Saúde"
+        - "Manufatura"
+        - "Varejo"

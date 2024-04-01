@@ -1,0 +1,26 @@
+<h3>Detalhes do Carro</h3>
+<%= render partial: 'cars/car_details', locals: { car: @car } %> 
+
+<%= link_to 'Registrar Multa', new_car_fine_path(@car), class:'btn btn-danger' %>
+
+<% if @car.on_maintenance? %>
+  <%= link_to "Dar baixa em manutenção", new_return_maintenance_path(@car.current_maintenance), class:'btn btn-success' %>
+<% elsif @car.available? %>
+  <%= link_to "Enviar para vistoria", new_car_inspection_path(@car), class:'btn btn-info'%>
+  <% if (current_user.manager? && current_user.subsidiary?(@car.subsidiary)) || current_user.admin? %>
+    <%= link_to "Enviar para manutenção", new_car_maintenance_path(@car), class:'btn btn-warning' %>
+  <% end %>
+<% end %>
+<hr>
+<h3>Histórico de Locações</h3>
+<% @car.rentals.each do |rental| %>
+  <p> Retirada : <%= rental.started_at&.strftime("%d/%m/%Y %H:%M:%S") %>  <|>  
+  <% if rental.finished? %>
+        Devolução : <%= rental.finished_at&.strftime("%d/%m/%Y %H:%M:%S") %> </p>
+  <% else %>
+    <%= "Devolução : ------------" %> </p>
+  <% end %>
+<% end %>
+
+
+

@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <table class="table table-bordered table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Identification</th>
+        <th scope="col">Quilometragem</th>
+        <th scope="col">Cor</th>
+        <th scope="col">Optional</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% cars.each do |car| %>
+          <tr>
+            <td> <%= link_to car.car_identification, car %> </td> 
+            <td> <%= car.car_km.to_s %> </td>
+            <td> <%= car.color %> </td>
+            <td> <%= car.car_model.car_options %> </td>
+            <td> <%= car.status %> </td>
+          </tr>
+      <% end %>
+        
+      
+    </tbody>
+  </table>
+</div>
+

@@ -1,0 +1,12 @@
+<h2>Seu recibo do aluguel</h2>
+
+<h4>Cliente:</h4>
+<p>Nome: <%= @customer.name %></p>
+
+<h4>Locação:</h4>
+<p>Codigo: <%= @rental.rented_code %></p>
+<p>Alugado em: <%= @rental.created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>
+<p>Previsão de devolução: <%= @rental.scheduled_end.strftime("%d/%m/%Y") %></p>
+
+<h4>Veículo:</h4>
+<p><%= "#{@car.car_model.name} - #{@car.license_plate}" %></p>

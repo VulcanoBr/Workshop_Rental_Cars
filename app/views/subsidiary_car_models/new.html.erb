@@ -1,0 +1,17 @@
+<h1>Novo Preço</h1>
+
+<%= render partial: 'shared/model_errors', locals: { object: @subsidiary_car_model } %>
+<%= form_for @subsidiary_car_model do |f| %>
+  <div class="form-group">
+    <%= f.label :car_model_id, 'Selecione o modelo' %>
+    <%= f.collection_select :car_model_id, @car_models, :id, :name, { include_blank: 'Selecione um modelo'}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :price, 'Preço' %>
+    <%= f.text_field :price, class: 'form-control' %>
+  </div>
+
+  <%= f.submit 'Cadastrar preço', class: 'btn btn-primary' %>
+  <%= link_to 'Cancelar', root_path, class:"btn btn-outline-danger" %>
+<% end %>

@@ -1,0 +1,19 @@
+
+
+<div class="d-flex justify-content-between mt-3 sticky-top"> 
+    <h3 class="text-center ">Lista de Cliente(s)</h3>
+    <%= form_tag(customers_path, method: :get) do %>
+        <%= text_field_tag(:name, '', { id: 'search-field', placeholder: 'Buscar cliente...' } )%>
+        <%= submit_tag('Buscar', class: 'btn btn-primary') %>
+    <% end %>
+</div>
+
+<% if @customers.present? %>
+  <ul class="list-group">
+    <% @customers.each do |customer|%>
+     <li> <%=link_to customer.description, customer %> </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Nenhum cliente encontrado para '<%= params[:name] %>' !!!.</p>
+<% end %>

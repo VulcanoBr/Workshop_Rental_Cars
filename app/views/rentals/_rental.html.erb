@@ -1,0 +1,19 @@
+
+<div class="container mt-4">
+  <table class="table table-bordered table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Carro</th>
+        <th scope="col">Placa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% rentals.each do |rental| %>
+          <tr>
+            <td> <%= link_to rental.car.car_model.name, rental_path(rental) %> </td> 
+            <td> <%= rental.car.license_plate %> </td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

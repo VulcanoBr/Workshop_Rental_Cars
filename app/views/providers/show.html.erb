@@ -1,0 +1,9 @@
+<h3>Fornecedores</h3>
+
+<p>Nome: <%= @provider.name %></p>
+<p>Email: <%= @provider.email %></p>
+<p>CNPJ: <%= @provider.cnpj %></p>
+<p>Telefone: <%= @provider.phone %></p>
+
+<%= link_to "Editar fornecedor", edit_provider_path, class: "btn btn-primary" %>
+<%= link_to 'Cancelar', root_path, class:"btn btn-outline-danger" %>

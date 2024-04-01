@@ -1,0 +1,12 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      provider: 'Fornecedor'
+    attributes:
+      provider:
+        name: 'Nome'
+        email: 'Email'
+        cnpj: 'CNPJ'
+        phone: 'Telefone'
+      

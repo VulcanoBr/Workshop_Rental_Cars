@@ -1,0 +1,5 @@
+pt_BR:
+  faker:
+    address:
+      street_address: 'Endereço'
+      neighborhood: 'Bairro'

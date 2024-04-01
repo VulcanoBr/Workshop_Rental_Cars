@@ -1,0 +1,36 @@
+Arguments: 
+  /home/vulcan/.asdf/installs/nodejs/18.16.0/bin/node /home/vulcan/.asdf/installs/yarn/1.22.19/bin/yarn.js add popperjs
+
+PATH: 
+  /home/vulcan/.asdf/plugins/nodejs/shims:/home/vulcan/.asdf/installs/nodejs/18.16.0/bin:/home/vulcan/.asdf/installs/yarn/1.22.19/bin:/home/vulcan/.asdf/shims:/home/vulcan/.asdf/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Python39/Scripts/:/mnt/c/Python39/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/e/Ubuntu-2004:/mnt/e/PostgreSQL/12/bin:/mnt/e/VSCode/bin:/mnt/e/Nitro/Reader 5:/mnt/c/Program Files/dotnet/:/mnt/c/Windows/System32/drivers/discid.dll:/mnt/c/Program Files (x86)/Windows Media Player/webmdshow-1.0.4.1:/mnt/e/Zoom/bin:/mnt/c/ProgramData/chocolatey/bin:/mnt/d/Yarn/bin/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/h/Microsoft SQL Server (x86)/160/Tools/Binn/:/mnt/h/Microsoft SQL Server/160/Tools/Binn/:/mnt/h/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/:/mnt/h/Microsoft SQL Server/160/DTS/Binn/:/mnt/h/Microsoft SQL Server (x86)/160/DTS/Binn/:/mnt/c/Program Files/Azure Data Studio/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Users/Vulcano/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Vulcano/AppData/Local/GitHubDesktop/bin:/mnt/e/GitHubDesktop/bin:/mnt/c/Users/Vulcano/.dotnet/tools:/mnt/c/Users/Vulcano/AppData/Local/Yarn/bin:/mnt/c/Program Files/Azure Data Studio/bin:/snap/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.16.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/popperjs: Not found
+      at params.callback [as _callback] (/home/vulcan/.asdf/installs/yarn/1.22.19/lib/cli.js:66145:18)
+      at self.callback (/home/vulcan/.asdf/installs/yarn/1.22.19/lib/cli.js:140890:22)
+      at Request.emit (node:events:513:28)
+      at Request.<anonymous> (/home/vulcan/.asdf/installs/yarn/1.22.19/lib/cli.js:141862:10)
+      at Request.emit (node:events:513:28)
+      at IncomingMessage.<anonymous> (/home/vulcan/.asdf/installs/yarn/1.22.19/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:627:28)
+      at IncomingMessage.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1359:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

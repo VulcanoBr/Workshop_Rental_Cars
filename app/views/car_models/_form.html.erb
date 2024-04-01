@@ -1,0 +1,35 @@
+<% if car_model.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% car_model.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for car_model do |f| %>
+  <div class="form-group">
+    <%= f.label :name, 'Nome' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :year, 'Ano' %>
+    <%= f.text_field :year, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :manufacture_id, 'Marca' %>
+    <%= f.collection_select :manufacture_id, @manufactures, :id, :name, {include_blank: 'Selecione uma marca'}, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :category, 'Categoria', class: "form-label" %>
+    <%= f.select(:category, [['Standard', 0], ['Luxo', 1], ['Familia', 2], ['Special', 3]],
+                { prompt: "Selecione uma categoria" }, { class: "form-control" }) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :car_options, 'Características' %>
+    <%= f.text_area :car_options, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Criar modelo', class: 'btn btn-primary' %>
+  <%= link_to 'Cancelar', root_path, class:"btn btn-outline-danger" %>
+<% end %>

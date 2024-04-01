@@ -1,0 +1,10 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      subsidiary_car_model: 'Filial'
+    attributes:
+      subsidiary_car_model:
+        price: 'Preço'
+        car_model: 'Modelo'
+        car_model_id: 'Modelo'

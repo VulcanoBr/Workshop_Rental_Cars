@@ -1,0 +1,20 @@
+<h1>Para Manutenção</h1>
+
+<dl class="row">
+  <dt class="col-sm-3">Idenfiticação:</dt>
+  <dd class="col-sm-9"><%= @car.car_identification %></dd>
+
+  <dt class="col-sm-3">Status:</dt>
+  <dd class="col-sm-9"><%= t @car.status %></dd>
+
+</dl>
+
+<%= form_for ([@car, @maintenance]) do |f| %>
+  <div class="form-group">
+    <%= f.label :provider_id, 'Fornecedor parceiro', class: "form-label" %>
+    <%= f.collection_select(:provider_id, Provider.all, :id, :name, {include_blank: "Selecione um fornecedor"}, { class: "form-control" }) %>
+  </div>
+
+  <%= f.submit 'Enviar para manutenção', class: "btn btn-primary" %>
+  <%= link_to 'Cancelar', root_path, class:"btn btn-outline-danger" %>
+<% end %>

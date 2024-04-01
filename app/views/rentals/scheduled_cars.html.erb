@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-between mt-3 sticky-top"> 
+    <h3 class="text-center ">Carro(s) Agendado(s)</h3>
+    <%= form_tag(scheduled_cars_rentals_path, method: :get) do %>
+        <%= text_field_tag(:rented_code, '', { id: 'search-field', placeholder: 'Buscar agendado...' } )%>
+        <%= submit_tag('Buscar', class: 'btn btn-primary') %>
+    <% end %>
+</div>
+
+<hr>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h5>Codigo de Locação</h5>
+    </div>
+    <div class="col">
+      <h5>Previsão Retirada</h5>
+    </div>
+    <div class="col">
+      <h5>Previsão Devolução</h5>
+    </div>
+  </div>
+  <% if @rental_status_cars.present? %>
+    <% @rental_status_cars.each do |scheduled_car| %>
+      <div class="row">
+        <div class="col">
+          <p><%= link_to scheduled_car.rented_code, rental_path(scheduled_car.id) %></p>
+        </div>
+        <div class="col">
+          <p><%= scheduled_car.scheduled_start.strftime("%d/%m/%Y") %></p>
+        </div>
+        <div class="col">
+          <p><%= scheduled_car.scheduled_end.strftime("%d/%m/%Y") %></p>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>Nenhuma locação encontrada para '<%= params[:rented_code] %>' !!!.</p>
+  <% end %>
+</div>

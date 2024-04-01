@@ -1,0 +1,24 @@
+<h1>Registrar Multa </h1>
+
+<%= render partial: 'shared/model_errors', locals: { object: @fine } %>
+
+<%= form_for [@car, @fine] do |f| %>
+  <div class="form-group">
+    <%= f.label :issued_on, 'Data de emissão' %>
+    <%= f.date_field :issued_on, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :demerit_points, 'Quantidade de pontos' %>
+    <%= f.text_field :demerit_points,class: 'form-control' %>
+  </div>
+  <div class="form-group">  
+    <%= f.label :fine_value, 'Valor' %>
+    <%= f.text_field :fine_value, class: 'form-control'%>
+  </div>  
+  <div class="form-group">
+    <%= f.label :address, 'Endereço da ocorrência' %>
+    <%= f.text_area :address, class: 'form-control' %>
+  </div>  
+  <%= f.submit 'Cadastrar Multa', class: 'btn btn-primary' %>
+  <%= link_to 'Cancelar', root_path, class:"btn btn-outline-danger" %>
+<% end %>

@@ -1,0 +1,21 @@
+<dl class="row">
+  <dt class="col-sm-3">Idenfiticação:</dt>
+  <dd class="col-sm-9"><%= link_to car.car_identification, car %></dd>
+
+  <dt class="col-sm-3">Diaria:</dt>
+  <dd class="col-sm-9"><%= number_to_currency(car.subsidiary.subsidiary_car_models.find_by(subsidiary_id: car.subsidiary_id, car_model_id: car.car_model_id )&.price || 0, unit: 'R$', separator: ',', delimiter: '.') %></dd>
+
+  <dt class="col-sm-3">Quilometragem:</dt>
+  <dd class="col-sm-9"><%= car.car_km.to_s %></dd>
+
+  <dt class="col-sm-3">Cor:</dt>
+  <dd class="col-sm-9"><%= car.color %></dd>
+
+  <dt class="col-sm-3">Status:</dt>
+  <dd class="col-sm-9"><%= t car.status %></dd>
+
+  <dt class="col-sm-3">Opcionais:</dt>
+  <dd class="col-sm-9"><%= car.car_model.car_options %></dd>
+</dl> 
+<hr>
+

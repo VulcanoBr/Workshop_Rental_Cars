@@ -1,0 +1,126 @@
+
+  <div class="container-fluid">
+    
+    <h2 class="text-center mt-3">Painel <%= Time.now.year.to_s %></h2>
+    
+    <hr>
+    
+    <div class="row">
+      <div class="col-md-5 mb-3">
+        <div class="card border-primary">
+          <div class="card-header bg-secondary d-flex justify-content-around" style= "color: white;">Frota <strong ><%= @cars_status["total"] || 0 %></strong></div>
+          <div class="card-body text-center">
+            <div class="row text-center">
+              <div class="col-md-5">
+                <h5 class="mb-0">Disponíveis</h5>
+                <span class="badge badge-success rounded-circle  " style="font-size: 20px;"><%= @cars_status["total_available"] || 0 %></span>
+                <span class="mb-3 badge badge-success rounded-circle " style="font-size: 20px;"><%= @cars_status["available_percentage"]&.round(2) || 0 %>%</span>
+              </div>
+              <div class="col-md-6">
+                <h5 class="mb-0">Em Manutenção</h5>
+                <span class="badge badge-danger rounded-circle " style=" font-size: 20px;"><%= @cars_status["total_in_maintenance"] || 0 %> </span>
+                <span class="badge badge-danger rounded-circle " style=" font-size: 20px;"><%= @cars_status["in_maintenance_percentage"]&.round(2) || 0 %>%</span>
+              </div>
+              <div class="col-md-5">
+                <h5 class="mb-0">Alugados</h5>
+                <span class="badge badge-warning rounded-circle p-1" style="border-radius: 45%; font-size: 20px;"><%= @cars_status["total_allocated"]  %></span>
+                <span class="badge badge-warning rounded-circle " style="border-radius: 45%; font-size: 20px;"><%= @cars_status["allocated_percentage"]&.round(2) || 0 %>%</span>
+              </div>
+              <div class="col-md-5">
+                <h5 class="mb-0">Agendados</h5>
+                <span class="badge badge-info rounded-circle p-1" style="border-radius: 45%; font-size: 20px;"><%= @cars_status["total_scheduled"]  %></span>
+                <span class="badge badge-info rounded-circle " style="border-radius: 45%; font-size: 20px;"><%= @cars_status["scheduled_percentage"]&.round(2) || 0 %>%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-3 align-items-center" style="display: flex; flex-direction: column; justify-content: center;">
+        <h3> Clientes </h3>
+        <span class="mt-3" style="border-radius: 50%; width: 100px; height: 100px; background-color: #337ab7; color: white; text-align: center; font-size: 18px;">
+          Pessoa Fisica
+          <br>
+          <span id="primeiro_span"><%= @customers_by_type["total_personal"] || 0 %> </span>
+        </span>
+      
+        <span class="mt-3 mb-3" style="border-radius: 50%; width: 100px; height: 100px; background-color: #337ab7; color: white; text-align: center; font-size: 18px;">
+          Pessoa Juridica
+          <br>
+          <span id="segundo_span"><%= @customers_by_type["total_company"] || 0 %></span>
+        </span>
+      </div>
+      <div class="col-md-4">
+        <div class="card border-primary">
+          <div class="card-header bg-info" style= "color: white;">
+          <strong> <%= link_to "Financeiro", subsidiary_finances_rentals_path(year: Time.now.year) %> </strong></div>
+          <div class="card-body text-center">
+            <ul class="list-group list-group-flush">
+              
+              <li class="list-group-item"><span class="badge badge-success">Alocações:</span><span id="daily_price">
+                <%= number_to_currency(@total_daily_price, unit: 'R$', separator: ',', delimiter: '.') %></span></li>
+              <li class="list-group-item"><span class="badge badge-danger">Manutenção: </span> <span id="maintenace_date">
+                <%= number_to_currency(@total_service_cost, unit: 'R$', separator: ',', delimiter: '.') %></span></li>
+              <li class="list-group-item"><span class="badge badge-danger">Multas: </span> <span id="multas">
+                <%= number_to_currency(@total_fine_value, unit: 'R$', separator: ',', delimiter: '.') %></span></li>
+              <li class="list-group-item font-weight-bold"><span class="badge badge-info">Total Receita: </span> <span id="total_alugados">
+                <%= number_to_currency(@total_cost, unit: 'R$', separator: ',', delimiter: '.') %></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  </div>
+
+    </div>
+     
+      
+      
+    <hr>
+
+
+
+  <hr>
+    <div class="">
+      <div class="row">
+        <div class="col-12">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Subsidiary</th>
+                  <th scope="col">Availables</th>
+                  <th scope="col">In Maintenance</th>
+                  <th scope="col">Scheduleds</th>
+                  <th scope="col">Allocateds</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @cars_by_subsidiary_and_status.each do |resultado| %>
+                <tr>
+                  <td><%= resultado.subsidiary_name %></td>
+                  <td>
+                    <%= resultado.total_available %>
+                    <span class="badge badge-success" style="font-size: 16px;"> <%= resultado.percentage_available.round(2) %>% </span>
+                  </td>
+                  <td>
+                    <%= resultado.total_in_maintenance %>
+                    <span class="badge badge-danger" style="font-size: 16px;"> <%= resultado.percentage_in_maintenance.round(2) %>% </span>
+                  </td>
+                  <td>
+                    <%= resultado.total_scheduled %>
+                    <span class="badge badge-info" style="font-size: 16px;"><%= resultado.percentage_scheduled.round(2) %>% </span>
+                  </td>
+                  <td>
+                    <%= resultado.total_allocated %>
+                    <span class="badge badge-warning" style="font-size: 16px;"><%= resultado.percentage_allocated.round(2) %>% </span>
+                  </td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
