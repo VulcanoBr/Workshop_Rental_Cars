@@ -29,7 +29,7 @@ Principais Características e Funcionalidades
     - Clone do projeto do github para minha maquina.
     - Criei um projeto em Ruby on Rails 7 (rails new Workshop_Rental_Cars --database= postgresql -T)
     - Inclusão das gens do projeto original que não existem no projeto criado.
-    - Executar  bundle update.
+    - Executar  bundle update (Todas as gens foram atualizadas para as ultimas versões para Ruby on Rails 7.1.0.; exceto a gem do Bootstrap 4.3.1).
     - Executar bundle check.
     - Copia do conteudo das pastas Controller, Migrate do projeto original para o atual.
     - Execução rails g devise:install
@@ -42,14 +42,13 @@ Principais Características e Funcionalidades
     - Alterar assets/stylesheets/application.css  para  assets/stylesheets/application.scss 
     - Incluir @import "bootstrap";  em assets/stylesheets/application.scss
     - Incluir import "jquery";  import "bootstrap";    em app/javascript/application.js
+    - Incluir pin "jquery";   em app/config/importmap.rb
+    - ncluir pin "bootstrap", to: "https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"; em app/config/importmap.rb
 
-
+### Apos analise e entendimento do funcionamento do app, foram: 
 - Acrescentado novos teste, atingindo 90% de cobertura (boa parte dos testes utilizando IA).
-
-- Todas as gens foram atualizadas para as ultimas versões para Ruby on Rails 7.1.0.; exceto a gem do Bootstrap 4.3.1
-
 - Incluido validates para a maioria dos models.
-- Modificações em layouts, inclusão de um navbar, criação painel para Home/Index
+- Modificações em layouts, inclusão de um navbar, criação painel para Home/Index, e nova view para visualizar paineldetalhado, inclusão de search em algumas views, criação de mascara para telefone, cpf/cnpj, cep em stimulus; inclusão de pesquisa de cep por meio da API ViaCep via stimulus.
 - Alterada regra de negocio, onde personal client so pode fazer uma nova alocação, quando não há  uma alocação em andamento; e o company client não tem restrição.
 - Incluido rotina para cancelamento de uma alocação, que ainda não foi ativada, com envio de email para o cancelamento.
 

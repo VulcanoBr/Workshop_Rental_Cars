@@ -15,36 +15,46 @@
   </div>
   <h3>Endereço</h3>
   <%= f.fields_for :address do |address_form| %>
-    <div class="form-group">
-      <%= address_form.label :zipcodet, 'Cep' %>
-      <%= address_form.text_field :zipcode, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= address_form.label :street, 'Logradouro' %>
-      <%= address_form.text_field :street, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= address_form.label :number, 'Número' %>
-      <%= address_form.text_field :number, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= address_form.label :complement, 'Complemento' %>
-      <%= address_form.text_field :complement, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= address_form.label :neighborhood, 'Bairro' %>
-      <%= address_form.text_field :neighborhood, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= address_form.label :city, 'Cidade' %>
-      <%= address_form.text_field :city, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= address_form.label :state, 'Estado' %>
-      <%= address_form.text_field :state, class: 'form-control' %>
+    <div data-controller="forms--maskpesqcep">
+      <div class="form-group">
+        <%= address_form.label :zipcodet, 'Cep' %>
+        <%= address_form.text_field :zipcode, class: 'form-control', maxlength: '8',
+            data: { target: 'forms--maskpesqcep.inputZipCode', 
+            action: 'keyup->forms--maskpesqcep#addMaskToZipCodeFields focusout->forms--maskpesqcep#consultarCEP'} %>
+      </div>
+      <div class="form-group">
+        <%= address_form.label :street, 'Logradouro' %>
+        <%= address_form.text_field :street, class: 'form-control',
+            data: { target: 'forms--maskpesqcep.logradouroText' } %> 
+      </div>
+      <div class="form-group">
+        <%= address_form.label :number, 'Número' %>
+        <%= address_form.text_field :number, class: 'form-control',
+            data: { target: "forms--maskpesqcep.numeroText" } %>
+      </div>
+      <div class="form-group">
+        <%= address_form.label :complement, 'Complemento' %>
+        <%= address_form.text_field :complement, class: 'form-control',
+            data: { target: "forms--maskpesqcep.complementoText" } %>
+      </div>
+      <div class="form-group">
+        <%= address_form.label :neighborhood, 'Bairro' %>
+        <%= address_form.text_field :neighborhood, class: 'form-control',
+            data: { target: "forms--maskpesqcep.bairroText" } %> 
+      </div>
+      <div class="form-group">
+        <%= address_form.label :city, 'Cidade' %>
+        <%= address_form.text_field :city, class: 'form-control',
+            data: { target: "forms--maskpesqcep.cidadeText" } %>
+      </div>
+      <div class="form-group">
+        <%= address_form.label :state, 'Estado' %>
+        <%= address_form.text_field :state, class: 'form-control',
+            data: { target: "forms--maskpesqcep.estadoText" } %>
+      </div>
     </div>
   <% end %>
 
-  <%= f.submit 'Criar filial', class: 'btn btn-primary' %>
-  <%= link_to 'Cancelar', root_path, class:"btn btn-outline-danger" %>
+    <%= f.submit 'Criar filial', class: 'btn btn-primary' %>
+    <%= link_to 'Cancelar', root_path, class:"btn btn-outline-danger" %>
 <% end %>
